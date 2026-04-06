@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block header %}
+<div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
+            <h1 class="mb-0 bread">register form</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+{% block content %}
+
+<div class="container m-5 p-5 border border-4 border-light w-25 mx-auto">
+  <h1>register FORM</h1>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" value="submit">
+
+
+  </form>
+
+  </div>
+
+{% endblock %}
