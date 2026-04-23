@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container m-5 p-5 border border-4 border-light w-25 mx-auto">
+  <h1>add category FORM</h1>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+    <input type="submit" value="submit">
+
+
+  </form>
+
+</div>
+
+{% endblock %}z

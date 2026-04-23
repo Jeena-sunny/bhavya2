@@ -14,9 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+app_name = 'cart'
 from django.contrib import admin
 from django.urls import path
-
+from cart import views
 urlpatterns = [
-    path('admin/', admin.site.urls),
+path('addtocart/<int:i>/', views.Addtocart.as_view(), name='addtocart'),
+    path('cartview/', views.CartView.as_view(), name='cartview'),
+path('cartremove/<int:i>/', views.CartRemove.as_view(), name='cartremove'),
+    path('cartdecrement/<int:i>/', views.CartDecrement.as_view(), name='cartdecrement'),
+path('checkout/', views.Checkout.as_view(), name='checkout'),
+    path('paymentsucess/', views.PaymentSuccess.as_view(), name='paymentsucess'),
+    path('ordersummary/', views.Ordersummary.as_view(), name='ordersummary'),
 ]

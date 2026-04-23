@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block header %}
+    <div class="hero-wrap hero-bread" style="background-image: url({% static 'images/bg_1.jpg' %});">
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Register</span></p>
+            <h1 class="mb-0 bread">PAYMENTS</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+{% block content %}
+
+<div class="container mt-5">
+    {% for i in orders %}
+    <div class="card p-4 mb-4 shadow" style="border-radius:15px;">
+
+        <!-- Order Details -->
+        <h5><b>Order ID:</b> {{ i.order_id }}</h5>
+        <h5><b>Order Total:</b> ₹{{ i.amount }}</h5>
+        <h5><b>Ordered On:</b> {{ i.order_date }}</h5>
+        <h5><b>Status:</b> {{ i.delivery_status }}</h5>
+
+        <hr>
+
+        <!-- Products -->
+        {% for j in i.items.all %}
+        <div class="card mb-3 p-3" style="border-radius:15px;">
+            <div class="row align-items-center">
+
+                <!-- Image (LEFT) -->
+                <div class="col-4 col-md-3 text-center">
+                    <img src="{{ j.product.image.url }}"
+                         class="img-fluid"
+                         style="max-height:120px; border-radius:10px;">
+                </div>
+
+                <!-- Details (RIGHT) -->
+                <div class="col-8 col-md-9 d-flex flex-column justify-content-center">
+                    <p><b>Product Name:</b> {{ j.product.name }}</p>
+                    <p><b>Price:</b> ₹{{ j.product.price }}</p>
+                    <p><b>Quantity:</b> {{ j.quantity }}</p>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

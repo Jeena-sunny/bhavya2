@@ -21,12 +21,16 @@ from django.urls import path
 from shop import views
 app_name = 'shop'
 urlpatterns = [
-    path('', views.Category.as_view(), name='home'),
+    path('', views.Categoryview.as_view(), name='home'),
 path('register', views.Register.as_view(), name='register'),
 
     path('login', views.Login.as_view(), name='login'),
     path('logout', views.Logout.as_view(), name='logout'),
-
+    path('products/<int:i>', views.Products.as_view(), name='products'),
+path('addproduct',views.Addproduct.as_view(),name='addproduct'),
+path('addcategory',views.Addcategory.as_view(),name='addcategory'),
+    path('detail/<int:i>',views.Detail.as_view(),name='detail'),
+    path('addstock/<int:i>',views.Addstock.as_view(),name='addstock'),
     ]
 from django.conf.urls.static import static
 from django.conf import settings
